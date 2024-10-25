@@ -1,6 +1,7 @@
 package lucavigano.gestioneprenotazioni.services;
 
 import lucavigano.gestioneprenotazioni.entities.Postazione;
+import lucavigano.gestioneprenotazioni.enums.TipoPostazione;
 import lucavigano.gestioneprenotazioni.exceptions.NotFoundException;
 import lucavigano.gestioneprenotazioni.repositories.PostazioneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class PostazioneService {
         return postazioneRepository.findById(postazioneId).orElseThrow(() -> new NotFoundException(postazioneId));
     }
 
-    public List<Postazione> cercaPostazioniPerTipoECitta(String tipo, String citta) {
+    public List<Postazione> cercaPostazioniPerTipoECitta(TipoPostazione tipo, String citta) {
         return postazioneRepository.findByTipoAndCitta(tipo, citta);
     }
 }
