@@ -1,7 +1,7 @@
 package lucavigano.gestioneprenotazioni.exceptions;
 
 public class NotFoundException extends RuntimeException {
-    public NotFoundException(String message) {
-        super(message);
+    public NotFoundException(long id){
+        super("L'utente con id " + id + " non è stato trovato!");
     }
 }

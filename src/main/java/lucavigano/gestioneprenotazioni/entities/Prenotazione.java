@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Entity
 @Table(name = "prenotazione")
@@ -34,4 +35,7 @@ public class Prenotazione {
         this.postazione = postazione;
         this.dataPrenotazione = dataPrenotazione;
     }
+
+//    public Prenotazione(Optional<Utente> utentefromdb, Optional<Postazione> postazionefromdb, LocalDate now) {
+//    }
 }

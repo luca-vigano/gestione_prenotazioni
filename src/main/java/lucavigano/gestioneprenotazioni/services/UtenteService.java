@@ -2,6 +2,7 @@ package lucavigano.gestioneprenotazioni.services;
 
 import lombok.extern.slf4j.Slf4j;
 import lucavigano.gestioneprenotazioni.entities.Utente;
+import lucavigano.gestioneprenotazioni.exceptions.NotFoundException;
 import lucavigano.gestioneprenotazioni.exceptions.ValidationException;
 import lucavigano.gestioneprenotazioni.repositories.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,9 @@ public class UtenteService {
         if(utenteRepository.existsByEmail(newUtente.getEmail())) throw new ValidationException("Email già usata");
         utenteRepository.save(newUtente);
         log.info("l'Utente " + newUtente.getUsername() + " è stato salvato correttamente");
+    }
+
+    public Utente findById (long utenteId){
+        return utenteRepository.findById(utenteId).orElseThrow(() -> new NotFoundException(utenteId));
     }
 }
