@@ -15,6 +15,7 @@ import lucavigano.gestioneprenotazioni.enums.TipoPostazione;
 public class Postazione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private Long id;
 
     private String descrizione;
@@ -27,4 +28,11 @@ public class Postazione {
     @ManyToOne
     @JoinColumn(name = "edificio_id")
     private Edificio edificio;
+
+    public Postazione(String descrizione, TipoPostazione tipoPostazione, int numeroMaxOccupanti, Edificio edificio) {
+        this.descrizione = descrizione;
+        this.tipoPostazione = tipoPostazione;
+        this.numeroMaxOccupanti = numeroMaxOccupanti;
+        this.edificio = edificio;
+    }
 }
