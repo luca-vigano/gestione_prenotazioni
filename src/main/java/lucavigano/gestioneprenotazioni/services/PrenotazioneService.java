@@ -15,8 +15,8 @@ public class PrenotazioneService {
     private PrenotazioneRepository prenotazioneRepository;
 
     public void salvaPrenotazione(Prenotazione newPrenotazione) {
-        List<Prenotazione> listaPrenotazioni = prenotazioneRepository.findByPostazione_IdAndDataPrenotazione(newPrenotazione.getPostazione(),newPrenotazione.getDataPrenotazione());
-        List <Prenotazione> listaConfrontoDate = prenotazioneRepository.findByUtente_IdAndDataPrenotazione(newPrenotazione.getUtente(),newPrenotazione.getDataPrenotazione());
+        List<Prenotazione> listaPrenotazioni = prenotazioneRepository.findByPostazioneAndDataPrenotazione(newPrenotazione.getPostazione().getId(),newPrenotazione.getDataPrenotazione());
+        List <Prenotazione> listaConfrontoDate = prenotazioneRepository.findByUtenteAndDataPrenotazione(newPrenotazione.getUtente().getId(),newPrenotazione.getDataPrenotazione());
         if(listaPrenotazioni.isEmpty()) throw new ValidationException("Postazione già prenotata per quella data");
         if(listaConfrontoDate.isEmpty()) throw new ValidationException("Hai già una prenotazione fatta per quella data");
 
